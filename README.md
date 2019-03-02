@@ -1,6 +1,6 @@
-# code_app
+# Code App
 
-A new Flutter application.
+A new Flutter Learning application.
 
 ## Getting Started
 
