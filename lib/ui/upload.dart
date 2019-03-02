@@ -8,7 +8,13 @@ class UploadPage extends StatefulWidget {
 class _UploadPageState extends State<UploadPage> {
   @override
   Widget build(BuildContext context) {
-    int _selectedIndex = 0;
+    int _selectedIndex = 2;
+    void _onItemTapped(int index) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Colors.pinkAccent,
@@ -47,14 +53,19 @@ class _UploadPageState extends State<UploadPage> {
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         onTap: (int x) {
+          _onItemTapped(x);
           if (x == 0) {
-            Navigator.of(context).pushNamed('/Alarm');
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/Alarm', (Route<dynamic> route) => false);
           } else if (x == 1) {
-            Navigator.of(context).pushNamed('/Play');
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/Play', (Route<dynamic> route) => false);
           } else if (x == 2) {
-            Navigator.of(context).pushNamed('/Upload');
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/Upload', (Route<dynamic> route) => false);
           } else if (x == 3) {
-            Navigator.of(context).pushNamed('/Capture');
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/Capture', (Route<dynamic> route) => false);
           }
         },
       ),
